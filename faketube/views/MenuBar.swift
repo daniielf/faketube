@@ -51,12 +51,7 @@ class MenuBar: UIView, UICollectionViewDelegateFlowLayout, UICollectionViewDataS
         addSubview(collectionView)
         self.addConstraintsWithFormat(format:"H:|[v0]|", views: collectionView)
         self.addConstraintsWithFormat(format:"V:|[v0]|", views: collectionView)
-        
-        collectionView.reloadData()
-        collectionView.performBatchUpdates(nil, completion: { _ in
-            self.collectionView.selectItem(at: [0,0], animated: true, scrollPosition: [])
-            print("SELECT!!!!")
-        })
+
     }
     
     func selectMenuItem(index: Int) {

@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol VideoDisplayDelegate {
+    func displayVideo(_ video: Video)
+}
+
 class HomeCollectionAsCell: UICollectionViewCell, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
     let _videoCell = "VideoCell"
     let randomCell = "_cell"
-    let dataSource: [Int] = [1,2,3,4,5,6,7,8,9,10]
+    var dataSource: [Video] = []
     var controller: MainController?
+    
+    
+    var videoDisplayDelegator: VideoDisplayDelegate!
 
     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -30,7 +37,21 @@ class HomeCollectionAsCell: UICollectionViewCell, UICollectionViewDelegateFlowLa
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        populateVideoArray()
         self.setupView()
+    }
+    
+    func populateVideoArray() {
+//        let myVideo:Video = Video()
+        let myVideo = Video()
+        myVideo.channel = nil
+        myVideo.title = "Florence + the Machine - Cosmic Love"
+        myVideo.videoUrl = "videoUrl"
+        myVideo.views = 9409201
+        
+        for _ in 1...13 {
+            self.dataSource.append(myVideo)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -44,19 +65,19 @@ class HomeCollectionAsCell: UICollectionViewCell, UICollectionViewDelegateFlowLa
         addConstraintsWithFormat(format:"H:|[v0]|", views: collectionView)
         addConstraintsWithFormat(format:"V:|[v0]|", views: collectionView)
         
-        let safeAreaToScroll = (window?.safeAreaInsets.top ?? 0) + 80
+        let safeAreaToScroll = (UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0)
+            + 42
         
         collectionView.contentInset = UIEdgeInsets(top: safeAreaToScroll, left: 0, bottom: 0, right: 0)
         collectionView.scrollIndicatorInsets = UIEdgeInsets(top: safeAreaToScroll, left: 0, bottom: 0, right: 0)
         
         collectionView.bounces = false
+
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
@@ -66,8 +87,9 @@ class HomeCollectionAsCell: UICollectionViewCell, UICollectionViewDelegateFlowLa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: _videoCell, for: indexPath) as! VideoCell
 
-        cell.videoTitle?.text = "My Titles is too big to fit in one single line, what should it do"
-        cell.views_count?.text = String("• " + "131231 views")
+        let videoRef = self.dataSource[indexPath.row]
+        cell.videoTitle?.text = videoRef.title
+        cell.views_count?.text = "- \(videoRef.views!) Views"
         cell.channelName?.text = "VEVO"
         cell.backgroundColor = .white
         cell.videoThumbnail = UIImageView(image: UIImage(named: "florence_placeholder"))
@@ -86,15 +108,26 @@ class HomeCollectionAsCell: UICollectionViewCell, UICollectionViewDelegateFlowLa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let videoPlayerLauncher = VideoLauncherController()
-        videoPlayerLauncher.displayVideoPlayerScreen(errorHandling: couldNotPlayVideo)
+        displayVideo(self.dataSource[indexPath.row])
+    }
+    
+    func displayVideo(_ video: Video) {
+        videoDisplayDelegator.displayVideo(video)
+    
+    }
+    
+    @objc func swopeDownView(_ sender: UISwipeGestureRecognizer) {
+        print("wot")
     }
     
     func couldNotPlayVideo() {
-        print("Error Ocurred:")
         let alert = UIAlertController(title: "Error", message: "Video could not be played", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         alert.show(self.controller!, sender: nil)
         controller?.present(alert, animated: true, completion: nil)
+    }
+    
+    func errorOcurred() {
+        couldNotPlayVideo()
     }
 }

@@ -8,14 +8,13 @@
 
 import Foundation
 
-class Movie: NSObject {
+class Video: NSObject {
     var title: String?
     var views: Int?
     var channel: Channel?
     var videoUrl: String?
     
-    init(json: Dictionary<String, AnyObject>) {
-        
-    }
-    
+//    init(json: Dictionary<String, AnyObject>?) {
+//        
+//    }
 }

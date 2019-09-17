@@ -8,7 +8,23 @@
 
 import UIKit
 
-class MainController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+enum pageTitles: String {
+    case home = "Home"
+    case trending = "Trending"
+    case subs = "Subscriptions"
+    case account = "My Account"
+}
+
+class MainController: UICollectionViewController, UICollectionViewDelegateFlowLayout, VideoDisplayDelegate, ErrorOnDisplayVideo {
+
+    func displayVideo(_ video: Video) {
+        let videoPlayerLauncher = VideoLauncherController()
+        videoPlayerLauncher.videoToDisplay = video
+        videoPlayerLauncher.errorDetectionDelegate = self
+         
+        self.navigationController?.pushViewController(videoPlayerLauncher, animated: true)
+    }
+    
     var mainCollectionViews: UICollectionView?
     
     let _pageAsCell = "pageAsHomeCell"
@@ -18,6 +34,11 @@ class MainController: UICollectionViewController, UICollectionViewDelegateFlowLa
         super.viewDidLoad()
         setupMainView()
         setupCollectionViews()
+        
+    }
+    
+    @objc func myMethod(_ sender: UISwipeGestureRecognizer) {
+        print("Swope down")
     }
     
     lazy var menuBar: MenuBar = {
@@ -33,12 +54,13 @@ class MainController: UICollectionViewController, UICollectionViewDelegateFlowLa
         navigationController?.navigationBar.barTintColor = .redMain
         navigationController?.navigationBar.shadowImage = UIImage()
         let titleMenuView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        titleMenuView.text = "Home"
+        titleMenuView.text = "  Home"
         titleMenuView.font = .boldSystemFont(ofSize: 20)
         titleMenuView.textColor = .white
         
         navigationItem.titleView = titleMenuView
-        
+
+        print("NavBarSpace:", navigationController?.navigationBar.frame.height)
 //
 //        let magnifierIcon = UIImage(named: "")
 //        magnifierIcon?.withRenderingMode(.alwaysOriginal)
@@ -74,15 +96,15 @@ class MainController: UICollectionViewController, UICollectionViewDelegateFlowLa
     }
     
     func setupCollectionViews() {
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: _pageAsCell)
-        collectionView.register(HomeCollectionAsCell.self, forCellWithReuseIdentifier: _homePageAsCell)
-        collectionView.backgroundColor = .lightGray
-        collectionView.isPagingEnabled = true
-        collectionView.bounces = false
+        self.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: _pageAsCell)
+        self.collectionView?.register(HomeCollectionAsCell.self, forCellWithReuseIdentifier: _homePageAsCell)
+        self.collectionView?.backgroundColor = .lightGray
+        self.collectionView?.isPagingEnabled = true
+        self.collectionView?.bounces = false
     }
     
     func setCollectionViewPage(index: Int) {
-         collectionView.setContentOffset(CGPoint(x: CGFloat(index) * (view.frame.width), y: 0), animated: true)
+        self.collectionView?.setContentOffset(CGPoint(x: CGFloat(index) * (view.frame.width), y: 0), animated: true)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -92,6 +114,7 @@ class MainController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let pageCell = collectionView.dequeueReusableCell(withReuseIdentifier: _homePageAsCell, for: indexPath) as! HomeCollectionAsCell
 
+        pageCell.videoDisplayDelegator = self
         pageCell.controller = self
         return pageCell
     }
@@ -110,6 +133,36 @@ class MainController: UICollectionViewController, UICollectionViewDelegateFlowLa
         let indexResolution = scrollView.contentOffset.x / view.frame.width
         menuBar.animateSlideBar(toOffset: Float(indexResolution))
         menuBar.selectMenuItem(index: Int(indexResolution))
+        setTabTitle(index: Int(indexResolution))
+    }
+    
+    func setTabTitle(index: Int) {
+        var title: pageTitles
+        switch(index) {
+            case 0: title = .home; break
+            case 1: title = .trending; break
+            case 2: title = .subs; break
+            case 3: title = .account; break
+            default : title = .home
+        }
+        
+        let titleMenuView = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        titleMenuView.text = "      " + title.rawValue
+        titleMenuView.font = .boldSystemFont(ofSize: 20)
+        titleMenuView.textColor = .white
+        
+        navigationItem.titleView = titleMenuView
+    }
+    
+    func couldNotPlayVideo() {
+        let alert = UIAlertController(title: "Error", message: "Video could not be played", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.show(self, sender: nil)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func errorOcurred() {
+        couldNotPlayVideo()
     }
 }
 

@@ -12,7 +12,7 @@ class Channel: NSObject {
     var name: String?
     var profile_image: String?
     
-    init(json: Dictionary<String, AnyObject>) {
-
-    }
+//    init(json: Dictionary<String, AnyObject>) {
+//
+//    }
 }

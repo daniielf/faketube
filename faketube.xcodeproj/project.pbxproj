@@ -23,7 +23,7 @@
 		F4FEE3F9232D86C20058A31F /* faketubeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FEE3F8232D86C20058A31F /* faketubeTests.swift */; };
 		F4FEE404232D86C20058A31F /* faketubeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FEE403232D86C20058A31F /* faketubeUITests.swift */; };
 		F4FEE413232D89980058A31F /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FEE412232D89980058A31F /* extensions.swift */; };
-		F4FEE416232D8C0F0058A31F /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FEE415232D8C0F0058A31F /* Movie.swift */; };
+		F4FEE416232D8C0F0058A31F /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FEE415232D8C0F0058A31F /* Video.swift */; };
 		F4FEE418232D8C8E0058A31F /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FEE417232D8C8E0058A31F /* Channel.swift */; };
 		F4FEE41B232D8D340058A31F /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4FEE41A232D8D340058A31F /* MovieService.swift */; };
 /* End PBXBuildFile section */
@@ -68,7 +68,7 @@
 		F4FEE403232D86C20058A31F /* faketubeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = faketubeUITests.swift; sourceTree = "<group>"; };
 		F4FEE405232D86C20058A31F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F4FEE412232D89980058A31F /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
-		F4FEE415232D8C0F0058A31F /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		F4FEE415232D8C0F0058A31F /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		F4FEE417232D8C8E0058A31F /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		F4FEE41A232D8D340058A31F /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +101,7 @@
 		F4195DEE232DE8DA00CF8FBE /* views */ = {
 			isa = PBXGroup;
 			children = (
+				F4FCF8DE233013ED00918E17 /* VideoLauncherController.swift */,
 				F4195DEF232DE9B700CF8FBE /* VideoCell.swift */,
 				F4195DF0232DE9B700CF8FBE /* VideoCell.xib */,
 				F4195DF5232DF6E200CF8FBE /* HomeCollectionAsCell.swift */,
@@ -139,7 +140,6 @@
 				F4FEE414232D8BF10058A31F /* models */,
 				F4FEE411232D89860058A31F /* extensions */,
 				F4FEE3E0232D86C10058A31F /* AppDelegate.swift */,
-				F4FCF8DE233013ED00918E17 /* VideoLauncherController.swift */,
 				F4FEE3E2232D86C10058A31F /* MainController.swift */,
 				F4FEE3E4232D86C10058A31F /* Main.storyboard */,
 				F4FEE3EA232D86C20058A31F /* Assets.xcassets */,
@@ -179,7 +179,7 @@
 		F4FEE414232D8BF10058A31F /* models */ = {
 			isa = PBXGroup;
 			children = (
-				F4FEE415232D8C0F0058A31F /* Movie.swift */,
+				F4FEE415232D8C0F0058A31F /* Video.swift */,
 				F4FEE417232D8C8E0058A31F /* Channel.swift */,
 			);
 			path = models;
@@ -334,7 +334,7 @@
 				F4FEE3E9232D86C10058A31F /* faketube.xcdatamodeld in Sources */,
 				F4FEE3E1232D86C10058A31F /* AppDelegate.swift in Sources */,
 				F4FEE413232D89980058A31F /* extensions.swift in Sources */,
-				F4FEE416232D8C0F0058A31F /* Movie.swift in Sources */,
+				F4FEE416232D8C0F0058A31F /* Video.swift in Sources */,
 				F4FCF8DF233013ED00918E17 /* VideoLauncherController.swift in Sources */,
 				F4E24E14232FB0370006AEB1 /* MenuBar.swift in Sources */,
 				F4FEE41B232D8D340058A31F /* MovieService.swift in Sources */,
@@ -520,7 +520,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dfdev.faketube;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -537,7 +537,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dfdev.faketube;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
