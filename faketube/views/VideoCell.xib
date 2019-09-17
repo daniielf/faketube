@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCell" id="gTV-IL-0wX" customClass="VideoCell" customModule="faketube" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="400" height="300"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="thumbnail" image="florence_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="VZO-Af-qyv">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="230"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="VZO-Af-qyv" secondAttribute="height" multiplier="40:23" id="sOu-Wk-PJU"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="channel_name" text="Chanel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsz-Sw-Gv4">
+                        <rect key="frame" x="70" y="260.5" width="54" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6az-gf-2Ex">
+                        <rect key="frame" x="10" y="240" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="Unj-k0-If6"/>
+                            <constraint firstAttribute="width" constant="48" id="nHJ-jt-GSy"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="views" text="Views" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aD5-AO-GjN">
+                        <rect key="frame" x="129" y="260.5" width="45.5" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" restorationIdentifier="title" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="txl-oB-wq0">
+                        <rect key="frame" x="72" y="237" width="380" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="aD5-AO-GjN" firstAttribute="firstBaseline" secondItem="vsz-Sw-Gv4" secondAttribute="firstBaseline" id="4W7-8a-QiS"/>
+                <constraint firstItem="txl-oB-wq0" firstAttribute="top" secondItem="VZO-Af-qyv" secondAttribute="bottom" constant="5" id="5sE-dK-ZJL"/>
+                <constraint firstItem="VZO-Af-qyv" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="64a-RN-l4v"/>
+                <constraint firstItem="aD5-AO-GjN" firstAttribute="leading" secondItem="vsz-Sw-Gv4" secondAttribute="trailing" constant="5" id="CFI-iP-k8c"/>
+                <constraint firstItem="vsz-Sw-Gv4" firstAttribute="top" secondItem="txl-oB-wq0" secondAttribute="bottom" constant="5" id="JfC-Xe-29s"/>
+                <constraint firstItem="6az-gf-2Ex" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" constant="10" id="SPB-49-eBQ"/>
+                <constraint firstItem="vsz-Sw-Gv4" firstAttribute="leading" secondItem="6az-gf-2Ex" secondAttribute="trailing" constant="12" id="TJg-qZ-BgR"/>
+                <constraint firstItem="VZO-Af-qyv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="We9-IY-oYn"/>
+                <constraint firstItem="txl-oB-wq0" firstAttribute="leading" secondItem="6az-gf-2Ex" secondAttribute="trailing" constant="12" id="cfF-kM-aXh"/>
+                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="txl-oB-wq0" secondAttribute="trailing" constant="10" id="cpI-T7-hzT"/>
+                <constraint firstAttribute="trailing" secondItem="VZO-Af-qyv" secondAttribute="trailing" id="oTN-Fm-Yhb"/>
+                <constraint firstItem="6az-gf-2Ex" firstAttribute="top" secondItem="VZO-Af-qyv" secondAttribute="bottom" constant="10" id="y7P-UN-MiJ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="166" height="50"/>
+            <connections>
+                <outlet property="channelName" destination="vsz-Sw-Gv4" id="mHt-KJ-IvC"/>
+                <outlet property="profileImage" destination="6az-gf-2Ex" id="3do-ts-vb4"/>
+                <outlet property="videoThumbnail" destination="VZO-Af-qyv" id="gEs-X0-1va"/>
+                <outlet property="videoTitle" destination="txl-oB-wq0" id="e6i-C4-0Nd"/>
+                <outlet property="views_count" destination="aD5-AO-GjN" id="0OA-Yk-QQd"/>
+            </connections>
+            <point key="canvasLocation" x="-181.15942028985509" y="85.714285714285708"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="florence_placeholder" width="1920" height="1080"/>
+    </resources>
+</document>
