@@ -46,7 +46,7 @@ class HomeCollectionAsCell: UICollectionViewCell, UICollectionViewDelegateFlowLa
         let myVideo = Video()
         myVideo.channel = nil
         myVideo.title = "Florence + the Machine - Cosmic Love"
-        myVideo.videoUrl = "videoUrl"
+        myVideo.videoUrl = "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
         myVideo.views = 9409201
         
         for _ in 1...13 {

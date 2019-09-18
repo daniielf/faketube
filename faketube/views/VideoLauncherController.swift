@@ -33,6 +33,8 @@ class VideoLauncherController: UIViewController {
     var videoInfoView: UIView?
     var player: AVPlayer?
     
+    var activityIndicator: UIActivityIndicatorView?
+    
     func displayVideoPlayerScreen() {
         self.setupVideoPanel()
 //        UIView.animate(withDuration: 0.5, animations: {
@@ -130,12 +132,44 @@ class VideoLauncherController: UIViewController {
             return
         }
 
-        let videoURL = URL(fileURLWithPath: (videoToDisplay?.videoUrl!)!)
-        player = AVPlayer(url: videoURL)
+        let videoURL = URL(string: (videoToDisplay?.videoUrl!)!)
+        player = AVPlayer(url: videoURL!)
         let playerLayer = AVPlayerLayer(player: player)
         videoPanel!.layer.addSublayer(playerLayer)
         playerLayer.frame = videoPanel!.frame
+        
+        activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        
+        videoPanel?.addSubview(activityIndicator!)
+        
+        activityIndicator?.centerXAnchor.constraint(equalTo: videoPanel!.centerXAnchor).isActive = true
+        activityIndicator?.centerYAnchor.constraint(equalTo: videoPanel!.centerYAnchor).isActive = true
+//        let centerX = NSLayoutConstraint(item: activityIndicator, attribute: .centerX, relatedBy: .equal, toItem: videoPanel, attribute: .centerX, multiplier: 0, constant: 1.0)
+//            centerX.isActive = true
+//        videoPanel?.addConstraint(centerX)
+//
+//        let centerY = NSLayoutConstraint(item: activityIndicator, attribute: .centerY, relatedBy: .equal, toItem: videoPanel, attribute: .centerY, multiplier: 1.0, constant: 0)
+//            centerY.isActive = true
+//        videoPanel?.addConstraint(centerY)
+        
+        activityIndicator?.color = .white
+        activityIndicator?.startAnimating()
+        
+        player?.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: [.old, .new], context: nil)
+        player?.volume = 0
         player?.play()
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == #keyPath(AVPlayerItem.status), let statusNumber = change?[.newKey] as? NSNumber {
+            switch statusNumber.intValue {
+            case AVPlayerItem.Status.readyToPlay.rawValue:
+                activityIndicator?.stopAnimating()
+//                let durationInSeconds = playerItem?.asset.duration.seconds ?? 0
+                print("Ready to play")
+            default: break
+            }
+        }
     }
     
     func dismissThisView() {
