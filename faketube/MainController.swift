@@ -18,11 +18,15 @@ enum pageTitles: String {
 class MainController: UICollectionViewController, UICollectionViewDelegateFlowLayout, VideoDisplayDelegate, ErrorOnDisplayVideo {
 
     func displayVideo(_ video: Video) {
-        let videoPlayerLauncher = VideoLauncherController()
-        videoPlayerLauncher.videoToDisplay = video
-        videoPlayerLauncher.errorDetectionDelegate = self
-         
-        self.navigationController?.pushViewController(videoPlayerLauncher, animated: true)
+//        let videoPlayerLauncher = VideoLauncherController()
+//        videoPlayerLauncher.videoToDisplay = video
+//        videoPlayerLauncher.errorDetectionDelegate = self
+//
+//        self.navigationController?.pushViewController(videoPlayerLauncher, animated: true)
+        let videoPlayer = VideoPlayerViewController()
+        
+        videoPlayer.video = video
+        self.navigationController?.pushViewController(videoPlayer, animated: true)
     }
     
     var mainCollectionViews: UICollectionView?

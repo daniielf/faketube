@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2405A96F2338F7F700FAB16E /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2405A96D2338F7F700FAB16E /* VideoPlayerViewController.swift */; };
+		2405A9702338F7F700FAB16E /* VideoPlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2405A96E2338F7F700FAB16E /* VideoPlayerViewController.xib */; };
 		F4018151232EFC8800DBB04F /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F401814F232EFC8800DBB04F /* MenuViewCell.swift */; };
 		F4018152232EFC8800DBB04F /* MenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4018150232EFC8800DBB04F /* MenuViewCell.xib */; };
 		F4195DF1232DE9B700CF8FBE /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4195DEF232DE9B700CF8FBE /* VideoCell.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2405A96D2338F7F700FAB16E /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		2405A96E2338F7F700FAB16E /* VideoPlayerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPlayerViewController.xib; sourceTree = "<group>"; };
 		F401814F232EFC8800DBB04F /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		F4018150232EFC8800DBB04F /* MenuViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuViewCell.xib; sourceTree = "<group>"; };
 		F4195DEF232DE9B700CF8FBE /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 				F401814F232EFC8800DBB04F /* MenuViewCell.swift */,
 				F4018150232EFC8800DBB04F /* MenuViewCell.xib */,
 				F4E24E13232FB0370006AEB1 /* MenuBar.swift */,
+				2405A96D2338F7F700FAB16E /* VideoPlayerViewController.swift */,
+				2405A96E2338F7F700FAB16E /* VideoPlayerViewController.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -298,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4FEE3EE232D86C20058A31F /* LaunchScreen.storyboard in Resources */,
+				2405A9702338F7F700FAB16E /* VideoPlayerViewController.xib in Resources */,
 				F4195DF2232DE9B700CF8FBE /* VideoCell.xib in Resources */,
 				F4018152232EFC8800DBB04F /* MenuViewCell.xib in Resources */,
 				F4FEE3EB232D86C20058A31F /* Assets.xcassets in Resources */,
@@ -328,6 +335,7 @@
 			files = (
 				F4FEE3E3232D86C10058A31F /* MainController.swift in Sources */,
 				F4018151232EFC8800DBB04F /* MenuViewCell.swift in Sources */,
+				2405A96F2338F7F700FAB16E /* VideoPlayerViewController.swift in Sources */,
 				F4195DF1232DE9B700CF8FBE /* VideoCell.swift in Sources */,
 				F4195DF6232DF6E200CF8FBE /* HomeCollectionAsCell.swift in Sources */,
 				F4FEE418232D8C8E0058A31F /* Channel.swift in Sources */,

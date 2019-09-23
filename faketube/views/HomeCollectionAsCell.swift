@@ -49,6 +49,12 @@ class HomeCollectionAsCell: UICollectionViewCell, UICollectionViewDelegateFlowLa
         myVideo.videoUrl = "https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
         myVideo.views = 9409201
         
+        let channel = Channel()
+        channel.name = "F+TMVevo"
+        channel.profile_image = "florence_thumbnail"
+        
+        myVideo.channel = channel
+        
         for _ in 1...13 {
             self.dataSource.append(myVideo)
         }
